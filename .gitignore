@@ -16,10 +16,7 @@ test/.pytest_cache/
 .venv/
 
 # файл черновика
-final_7_draft.py
-
-# папка вебинара
-api_вебинар/
+draft.py
 
 # папка с настройками VS Code 
 .vscode/

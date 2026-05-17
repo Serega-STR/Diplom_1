@@ -1,20 +1,37 @@
 import pytest
-
+from unittest.mock import Mock
 from praktikum.bun import Bun
 from praktikum.ingredient import Ingredient
 from praktikum.burger import Burger
+from praktikum.ingredient_types import *
 
 
 class TestBurger:
 
-    # Проверяем, что новый объект Burger создается в «чистом» состоянии:
+    # Проверяем, что новый объект Burger создается в "чистом" состоянии:
     # - булочка  изначально отсутствует (None)
     # - список ингредиентов пуст
     def test_initial_state(self, burger):
+        burger = Burger()
         assert burger.bun is None
         assert burger.ingredients == []
+    
+    # Добавляем в "чистый" бургер булку и ингредиент,
+    # проверяем новое состояние :
+    # у бургера теперь есть булка и пополнился список ингредиентов
+    def test_burger_with_bun_and_ingredient_state(self):
+        mock_bun = Mock()
+        mock_ingredient = Mock()
+        bun = mock_bun('black bun', 100.0)
+        ingredient = mock_ingredient(INGREDIENT_TYPE_SAUCE, 'hot sauce', 100.0)
+        burger = Burger()
+        burger.set_buns(bun)
+        burger.add_ingredient(ingredient)
+        assert burger.bun == bun
+        assert len(burger.ingredients) == 1
+        assert burger.ingredients[0] == ingredient
 
-    # Проверяем корректность установки булочкиметодом set_buns
+    # Проверяем корректность установки булки методом set_buns
     # Используем моковый объект mock_bun для изоляции теста
     def test_set_buns(self, burger, mock_bun):
         burger.set_buns(mock_bun)
