@@ -1,0 +1,29 @@
+# Кэши Python
+__pycache__/
+.pytest_cache/
+test/__pycache__/
+test/.pytest_cache/
+
+# Файлы IDE
+.idea/
+
+# Файлы логов и временные файлы
+*.log
+*.tmp
+*.temp
+
+# Виртуальное окружение Python
+.venv/
+
+# файл черновика
+draft.py
+
+# папка с настройками VS Code 
+.vscode/
+
+# папка с отчетом о покрытии и сопустствующие файлы
+htmlcov/
+.coverage
+
+# Сам файл .gitignore не игнорируем!
+!.gitignore
